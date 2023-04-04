@@ -4,7 +4,7 @@ const BasketContext = createContext(undefined);
 const BasketDispatchContext = createContext(undefined);
 
 const BasketProvider = ({ children }) => {
-  const [basketData, setBasketData] = useState(undefined);
+  const [basketData, setBasketData] = useState([]);
 
   return (
     <BasketContext.Provider value={basketData}>

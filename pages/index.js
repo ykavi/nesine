@@ -1,9 +1,14 @@
-import { useContext } from "react";
+import { useContext, Fragment } from "react";
 import { Col, Row } from "react-styled-flexboxgrid";
 import { BasketDispatchContext } from "@context";
 
 const Home = ({ data }) => {
-  const setBasketData = useContext(BasketDispatchContext);
+  const setBasketData = useContext(BasketDispatchContext) || (() => {});
+
+  const onClickHandler = (dataset, item) => {
+    console.log("item", dataset);
+    setBasketData((prev) => [...prev, { ...item, ...dataset }]);
+  };
 
   return (
     <Row>
@@ -34,9 +39,10 @@ const Home = ({ data }) => {
           </thead>
           <tbody>
             {data.map((item, index) => {
+              if (index > 10) return;
               return (
-                <>
-                  <tr key={"row" + index}>
+                <Fragment key={item?.C}>
+                  <tr>
                     <td>{`${item?.D} ${item?.LN}`}</td>
                     <td>Yorumlar</td>
                     <td>{item?.OCG[item?.TYPE]?.MBS}</td>
@@ -57,30 +63,45 @@ const Home = ({ data }) => {
                     <td>YOK</td>
                     <td>+99</td>
                   </tr>
-                  <tr>
+
+                  <tr onClick={(e) => onClickHandler(e.target?.dataset, item)}>
                     <td />
                     <td />
                     <td />
-                    <td onClick={() => setBasketData(item)}>
+                    <td data-ocid="1" data-mid="0">
                       {item?.OCG["1"]?.OC["0"]?.O}
                     </td>
-                    <td>{item?.OCG["1"]?.OC["1"]?.O}</td>
+
+                    <td data-ocid="1" data-mid="1">
+                      {item?.OCG["1"]?.OC["1"]?.O}
+                    </td>
+
                     <td />
-                    <td>{item?.OCG["5"]?.OC["25"]?.O}</td>
-                    <td>{item?.OCG["5"]?.OC["26"]?.O}</td>
+                    <td data-ocid="5" data-mid="25">
+                      {item?.OCG["5"]?.OC["25"]?.O}
+                    </td>
+                    <td data-ocid="5" data-mid="26">
+                      {item?.OCG["5"]?.OC["26"]?.O}
+                    </td>
                     <td />
                     <td />
                     <td />
                     <td />
                     <td />
-                    <td>{item?.OCG["2"]?.OC["3"]?.O}</td>
-                    <td>{item?.OCG["2"]?.OC["4"]?.O}</td>
-                    <td>{item?.OCG["2"]?.OC["5"]?.O}</td>
+                    <td data-ocid="2" data-mid="3">
+                      {item?.OCG["2"]?.OC["3"]?.O}
+                    </td>
+                    <td data-ocid="2" data-mid="4">
+                      {item?.OCG["2"]?.OC["4"]?.O}
+                    </td>
+                    <td data-ocid="2" data-mid="5">
+                      {item?.OCG["2"]?.OC["5"]?.O}
+                    </td>
                     <td />
                     <td />
                     <td>{Object.keys(item?.OCG)?.length}</td>
                   </tr>
-                </>
+                </Fragment>
               );
             })}
           </tbody>
