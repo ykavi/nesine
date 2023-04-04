@@ -21,14 +21,17 @@ export const Table = styled.table`
 
   tbody {
     td {
-      background-color: #f2f2f2;
+      background-color: #cad5e2;
       cursor: pointer;
     }
   }
 `;
 
-export const Tr = styled.tr``;
+export const Tr = styled.tr`
+  height: 56px;
+`;
 export const Td = styled.td`
+  background-color: #f5f5f5 !important;
   ${(props) =>
     props.isSelected &&
     css`
