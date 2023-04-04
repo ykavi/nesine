@@ -6,8 +6,21 @@ const Home = ({ data }) => {
   const setBasketData = useContext(BasketDispatchContext) || (() => {});
 
   const onClickHandler = (dataset, item) => {
-    console.log("item", dataset);
-    setBasketData((prev) => [...prev, { ...item, ...dataset }]);
+    setBasketData((prev) => {
+      const index = prev.findIndex((p) => p?.C === item?.C);
+
+      if (index > -1) {
+        const removedData = prev.filter((p) => p.C !== item?.C);
+        if (
+          prev[index]?.mid !== dataset?.mid ||
+          prev[index]?.ocid !== dataset?.ocid
+        ) {
+          return [...removedData, { ...item, ...dataset }];
+        }
+        return [...removedData];
+      }
+      return [...prev, { ...item, ...dataset }];
+    });
   };
 
   return (
