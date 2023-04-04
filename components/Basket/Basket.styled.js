@@ -8,6 +8,8 @@ export const Wrapper = styled.section`
   border: 1px solid #333;
   border-radius: 5px;
   padding: 10px;
+  max-height: 300px;
+  overflow: auto;
 `;
 
 export const Container = styled.div`
