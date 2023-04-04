@@ -7,7 +7,7 @@ const Basket = () => {
   let total = 0;
 
   return (
-    <Wrapper>
+    <Wrapper data-testId="basket">
       {basketData?.map((item) => {
         const rate = item?.OCG[item?.ocid]?.OC[item?.mid]?.O;
         total += 1 * rate;
