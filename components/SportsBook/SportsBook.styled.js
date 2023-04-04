@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 export const Table = styled.table`
   text-align: center;
@@ -20,11 +20,18 @@ export const Table = styled.table`
   }
 
   tbody {
-    tr {
-      td {
-        background-color: #f2f2f2;
-        cursor: pointer;
-      }
+    td {
+      background-color: #f2f2f2;
+      cursor: pointer;
     }
   }
+`;
+
+export const Tr = styled.tr``;
+export const Td = styled.td`
+  ${(props) =>
+    props.isSelected &&
+    css`
+      background-color: #ccc !important;
+    `}
 `;
