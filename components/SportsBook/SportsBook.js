@@ -1,12 +1,20 @@
-import { Fragment, useContext } from "react";
+import { Fragment, useContext, useRef, useState, useEffect } from "react";
 import { BasketDispatchContext } from "@context";
 import { Col, Row } from "react-styled-flexboxgrid";
+import { useOnScreen } from "@hooks";
 
 import Thead from "./Thead";
 import { Table } from "./SportsBook.styled";
 
 const SportsBook = ({ data }) => {
+  const [page, setPage] = useState(50);
   const setBasketData = useContext(BasketDispatchContext) || (() => {});
+  const elementRef = useRef(null);
+  const isOnScreen = useOnScreen(elementRef);
+
+  useEffect(() => {
+    if (isOnScreen) setPage((prev) => prev + 10);
+  }, [isOnScreen]);
 
   const onClickHandler = (dataset, item) => {
     if (!dataset?.mid || !dataset?.ocid) return;
@@ -31,7 +39,7 @@ const SportsBook = ({ data }) => {
   const Tbody = () => {
     return (
       <tbody>
-        {data?.map((item) => {
+        {[...data?.slice(0, page)]?.map((item, i) => {
           return (
             <Fragment key={item?.C}>
               <tr>
@@ -107,6 +115,7 @@ const SportsBook = ({ data }) => {
           <Thead eventCount={data?.length} />
           <Tbody />
         </Table>
+        <div ref={elementRef}>Loading...</div>
       </Col>
     </Row>
   );
