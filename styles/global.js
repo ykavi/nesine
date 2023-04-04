@@ -1,9 +1,9 @@
-import { css } from 'styled-components';
+import { css } from "styled-components";
 
 const globalCSS = css`
   html {
     height: 100%;
-    font-family: 'Roboto', Arial, sans-serif;
+    font-family: "Roboto", Arial, sans-serif;
   }
 
   body {
@@ -22,6 +22,7 @@ const globalCSS = css`
 
   td {
     padding: 8px 16px;
+    background: #f2f2f2;
   }
 
   p {

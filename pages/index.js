@@ -1,6 +1,10 @@
+import { useContext } from "react";
 import { Col, Row } from "react-styled-flexboxgrid";
+import { BasketDispatchContext } from "@context";
 
 const Home = ({ data }) => {
+  const setBasketData = useContext(BasketDispatchContext);
+
   return (
     <Row>
       <Col>
@@ -57,7 +61,9 @@ const Home = ({ data }) => {
                     <td />
                     <td />
                     <td />
-                    <td>{item?.OCG["1"]?.OC["0"]?.O}</td>
+                    <td onClick={() => setBasketData(item)}>
+                      {item?.OCG["1"]?.OC["0"]?.O}
+                    </td>
                     <td>{item?.OCG["1"]?.OC["1"]?.O}</td>
                     <td />
                     <td>{item?.OCG["5"]?.OC["25"]?.O}</td>
