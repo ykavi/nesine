@@ -3,7 +3,6 @@ import { ThemeProvider } from "styled-components";
 import theme from "@theme";
 import { MainLayout } from "@layout";
 import { BasketProvider } from "@context";
-import { Basket } from "@components";
 
 const MyApp = ({ Component, pageProps }) => (
   <>
@@ -19,7 +18,6 @@ const MyApp = ({ Component, pageProps }) => (
     <ThemeProvider theme={theme}>
       <BasketProvider>
         <MainLayout>
-          <Basket />
           <Component {...pageProps} />
         </MainLayout>
       </BasketProvider>
