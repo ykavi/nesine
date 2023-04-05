@@ -1,7 +1,7 @@
 import { Fragment, useContext, useRef, useState, useEffect } from "react";
-import { BasketDispatchContext, BasketContext } from "@context";
+import { BasketDispatchContext, BasketContext } from "../../context";
 import { Col, Row } from "react-styled-flexboxgrid";
-import { useOnScreen } from "@hooks";
+import { useOnScreen } from "../../hooks";
 
 import Thead from "./Thead";
 import { Table, Tr, Td } from "./SportsBook.styled";
@@ -12,8 +12,6 @@ const SportsBook = ({ data }) => {
   const setBasketData = useContext(BasketDispatchContext) || (() => {});
   const elementRef = useRef(null);
   const isOnScreen = useOnScreen(elementRef);
-
-  console.log("basketData", basketData);
 
   useEffect(() => {
     if (isOnScreen) setPage((prev) => prev + 10);
@@ -76,6 +74,7 @@ const SportsBook = ({ data }) => {
                 <Td />
                 <Td />
                 <Td
+                  data-testId={`${item?.C}-1-0`}
                   isSelected={C === item?.C && ocid === "1" && mid === "0"}
                   data-ocid="1"
                   data-mid="0"

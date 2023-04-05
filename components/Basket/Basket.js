@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { BasketContext } from "@context";
+import { BasketContext } from "../../context";
 import { Text, Container, Wrapper, TextGroup } from "./Basket.styled";
 
 const Basket = () => {
@@ -13,7 +13,7 @@ const Basket = () => {
         total += 1 * rate;
 
         return (
-          <Container key={item?.C}>
+          <Container data-testId={`basket-${item?.C}`} key={item?.C}>
             <TextGroup>
               <Text>{item?.OCG[item?.TYPE]?.MBS}</Text>
               <Text>{`Kod: ${item?.C}`}</Text>
@@ -24,7 +24,7 @@ const Basket = () => {
         );
       })}
 
-      <Text>Toplam Tutar: {total?.toFixed(2)}</Text>
+      <Text data-testId="total-amount">Toplam Tutar: {total?.toFixed(2)}</Text>
     </Wrapper>
   );
 };
