@@ -15,5 +15,6 @@ test("Render SportsBook", () => {
 
   fireEvent.click(screen.getByTestId(/2001-1-0/i));
   const basketItem = screen.getByTestId(/basket-2001/i);
+
   expect(basketItem).toBeInTheDocument();
 });
