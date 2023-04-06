@@ -70,7 +70,7 @@ const SportsBook = ({ data }) => {
               </tr>
 
               <Tr onClick={(e) => onClickHandler(e, item)}>
-                <Td />
+                <Td >{item?.N}</Td>
                 <Td />
                 <Td />
                 <Td
