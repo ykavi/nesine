@@ -4,4 +4,13 @@ import {
   BasketDispatchContext,
 } from "./BasketProvider";
 
-export { BasketProvider, BasketContext, BasketDispatchContext };
+import { RateContext, RateDispatchContext, RateProvider } from "./Rate";
+
+export {
+  BasketProvider,
+  BasketContext,
+  BasketDispatchContext,
+  RateProvider,
+  RateContext,
+  RateDispatchContext,
+};

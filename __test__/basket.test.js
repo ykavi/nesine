@@ -18,3 +18,14 @@ test("Render SportsBook", () => {
 
   expect(basketItem).toBeInTheDocument();
 });
+
+test("should correct pagination", () => {
+  const { container } = render(
+    <BasketProvider>
+      <SportsBook data={sportBookMock} />
+    </BasketProvider>
+  );
+
+  const test = container.querySelectorAll("tbody tr");
+  console.log(test.length);
+});

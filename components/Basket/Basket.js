@@ -1,9 +1,11 @@
 import { useContext } from "react";
-import { BasketContext } from "../../context";
+import { BasketContext, RateContext, RateProvider } from "../../context";
 import { Text, Container, Wrapper, TextGroup } from "./Basket.styled";
+import { RateSelectbox } from "../RateSelectbox";
 
 const Basket = () => {
   const basketData = useContext(BasketContext);
+  const rateData = useContext(RateContext);
   let total = 0;
 
   return (
@@ -24,7 +26,10 @@ const Basket = () => {
         );
       })}
 
-      <Text data-testId="total-amount">Toplam Tutar: {total?.toFixed(2)}</Text>
+      <Text data-testId="total-amount">
+        Toplam Tutar: {(total * parseInt(rateData)).toFixed(2)}
+      </Text>
+      <RateSelectbox />
     </Wrapper>
   );
 };

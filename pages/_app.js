@@ -2,7 +2,7 @@ import Head from "next/head";
 import { ThemeProvider } from "styled-components";
 import theme from "@theme";
 import { MainLayout } from "@layout";
-import { BasketProvider } from "@context";
+import { BasketProvider, RateProvider } from "@context";
 
 const MyApp = ({ Component, pageProps }) => (
   <>
@@ -17,9 +17,11 @@ const MyApp = ({ Component, pageProps }) => (
 
     <ThemeProvider theme={theme}>
       <BasketProvider>
-        <MainLayout>
-          <Component {...pageProps} />
-        </MainLayout>
+        <RateProvider>
+          <MainLayout>
+            <Component {...pageProps} />
+          </MainLayout>
+        </RateProvider>
       </BasketProvider>
     </ThemeProvider>
   </>
