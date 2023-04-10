@@ -1,11 +1,8 @@
 {
-  "extends": [
-    "airbnb",
-    "next/core-web-vitals"
-  ],
+  "extends": ["airbnb"],
   "overrides": [
     {
-      "files": ["*.js", "*.jsx"]
+      "files": ["*.js", "*.jsx", "*.json"]
     }
   ]
 }
